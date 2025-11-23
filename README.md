@@ -1,103 +1,133 @@
-🧠 Neural Translator
+# Neural Translator
 
-Neural Translator is a modern, desktop-based translation agent built with Python. It moves beyond simple script-based tools by offering a responsive "Glassmorphism" UI, real-time typing translation, and full voice-to-voice conversational capabilities.
+Modern, desktop translation agent with a clean CustomTkinter UI, realtime typing
+translation and voice-to-voice capabilities.
 
-Designed with CustomTkinter, it features a sleek dark/light mode interface that looks native on Windows, macOS, and Linux.
+---
 
-✨ Key Features
+## Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
 
-🎨 Modern UI: Built with CustomTkinter for a high-DPI, rounded-corner aesthetic.
+---
 
-🌗 Adaptive Theme: Toggle between Dark Mode and Light Mode instantly.
+## About
 
-⚡ Real-Time Translation: "Debounce" logic translates as you type (no submit button needed).
+Neural Translator is a desktop application written in Python that provides fast, local
+translation workflows with both text and voice support. It uses a modern CustomTkinter
+interface (glass-like styling), supports theme switching, and keeps a local history of
+translations.
 
-🗣️ Voice-to-Voice: * Mic Input: Speak to translate (SpeechRecognition).
+## Features
 
-TTS Output: Listen to translations (pyttsx3).
+- Modern CustomTkinter UI with dark/light themes
+- Real-time translation as you type (debounced input)
+- Voice input and text-to-speech output (SpeechRecognition + pyttsx3)
+- Local history stored in SQLite via `history_db.py`
+- Copy-to-clipboard and responsive, multithreaded UI for smooth performance
 
-💾 Local History: Automatically saves your translation history to a local SQLite database.
+## Project Structure
 
-📋 Quick Tools: One-click copy to clipboard.
+- `main.py` — Application GUI (frontend)
+- `translator_engine.py` — Translation logic and API wrappers
+- `audio_manager.py` — Microphone and speaker helpers
+- `history_db.py` — SQLite history manager
+- `requirment.text` — Dependency list (install with pip)
+- `README.md` — This file
 
-🚀 Multi-Threaded: The UI remains buttery smooth (60fps) even while fetching data from the API.
+> Note: The repository currently contains `requirment.text` (typo). Use that file
+> when installing dependencies or rename it to `requirements.txt` if you prefer.
 
-📂 Project Structure
+## Installation
 
-NeuralTranslator/
-│
-├── main.py              # 🖥️ The Application GUI (Frontend)
-├── translator_engine.py # 🧠 Translation Logic (API Wrapper)
-├── audio_manager.py     # 🎤 Microphone & Speaker Handler
-├── history_db.py        # 💾 SQLite Database Manager
-├── requirements.txt     # 📦 Dependency List
-└── README.md          
+Prerequisites:
 
+- Python 3.8+
+- (Optional) Virtual environment recommended
 
-🛠️ Installation
+Clone the repository:
 
-1. Prerequisites
+```powershell
+git clone <repo-url>
+cd Neural-Translator
+```
 
-Python 3.8 or higher is installed.
+Create and activate a virtual environment (Windows PowerShell):
 
-(Optional but recommended) A virtual environment.
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-2. Clone the Repository
+Install dependencies:
 
+```powershell
+pip install -r requirment.text
+```
 
-3. Install Dependencies
+If you renamed `requirment.text` to `requirements.txt`, run:
 
-Run the following command to install all required libraries:
-
+```powershell
 pip install -r requirements.txt
+```
 
+Linux note: for microphone support you may need system packages (example for Debian/Ubuntu):
 
-Note for Linux Users: You may need to install portaudio separately for the microphone to work:
+```bash
 sudo apt-get install python3-pyaudio portaudio19-dev
+```
 
-🚀 Usage
+## Usage
 
-To start the application, simply run the main.py file:
+Run the app:
 
+```powershell
 python main.py
+```
 
+Usage tips:
 
-Type in the left box to translate automatically.
+- Type in the text box to translate automatically (debounced input).
+- Click the microphone button to speak and translate.
+- Click the speaker button to hear the translated text.
+- Use the theme switch to toggle dark/light modes.
 
-Click 🎤 Speak to use your microphone.
+## Troubleshooting
 
-Click 🔊 Listen to hear the pronunciation.
+- ImportError: cannot import name 'HistoryDB'
+	- Ensure the file is named `history_db.py` and that your PYTHONPATH includes the
+		project directory.
 
-Use the Switch in the top right to change themes.
+- PyAudio installation failures
+	- Windows: try installing the appropriate `.whl` for your Python version or
+		install Visual C++ Build Tools.
+	- macOS: `brew install portaudio` then `pip install pyaudio`.
+	- Linux: install PortAudio and development headers, e.g. `portaudio19-dev`.
 
-🧩 Tech Stack
+## Tech Stack
 
-GUI: CustomTkinter
+- GUI: CustomTkinter
+- Translation: deep-translator (or other API adapters in `translator_engine.py`)
+- Audio: SpeechRecognition, pyttsx3, PyAudio
+- DB: sqlite3 (standard library)
 
-Translation: deep-translator
+## Contributing
 
-Audio: SpeechRecognition, pyttsx3, pyaudio
+Contributions are welcome. Open an issue or submit a pull request with a clear
+description of changes and testing steps.
 
-Database: sqlite3 (Standard Library)
+## License
 
-System: threading, pyperclip
+This project is available under the MIT License.
 
-🐛 Troubleshooting common errors
+## Author
 
-ImportError: cannot import name 'HistoryDB'
-
-Make sure your database file is named exactly history_db.py and not historyy_db.py or HistortDB.py.
-
-PyAudio fails to install
-
-Windows: If pip install pyaudio fails, try downloading the specific .whl file for your Python version from here, or install Visual C++ Build Tools.
-
-Mac/Linux: Ensure you have portaudio installed via Homebrew (brew install portaudio) or APT.
-
-📜 License
-
-This project is open-source and available under the MIT License.
-
-👨‍💻 Author
-
-Built with Python & Coffee by MD. Ashraful Al Amin
+Built by MD. Ashraful Al Amin
