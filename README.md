@@ -71,7 +71,7 @@ Install dependencies:
 
 ```powershell run:
 
-```powershell
+
 pip install -r requirements.txt
 ```
 
