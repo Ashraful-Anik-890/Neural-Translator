@@ -1,6 +1,6 @@
 # Neural Translator
 
-Modern, desktop translation agent with a clean CustomTkinter UI, realtime typing
+Modern, desktop translation agent with a clean CustomTkinter UI, real-time typing
 translation and voice-to-voice capabilities.
 
 ---
@@ -31,7 +31,7 @@ translations.
 - Modern CustomTkinter UI with dark/light themes
 - Real-time translation as you type (debounced input)
 - Voice input and text-to-speech output (SpeechRecognition + pyttsx3)
-- Local history stored in SQLite via `history_db.py`
+- Local history stored in SQLite via `history_db.py.`
 - Copy-to-clipboard and responsive, multithreaded UI for smooth performance
 
 ## Project Structure
@@ -40,11 +40,8 @@ translations.
 - `translator_engine.py` — Translation logic and API wrappers
 - `audio_manager.py` — Microphone and speaker helpers
 - `history_db.py` — SQLite history manager
-- `requirment.text` — Dependency list (install with pip)
+- `requirements.txt` — Dependency list (install with pip)
 - `README.md` — This file
-
-> Note: The repository currently contains `requirment.text` (typo). Use that file
-> when installing dependencies or rename it to `requirements.txt` if you prefer.
 
 ## Installation
 
@@ -71,8 +68,14 @@ Install dependencies:
 
 ```powershell run:
 
+# Core dependencies
+pip install deep-translator
+pip install SpeechRecognition
+pip install pyttsx3
 
-pip install -r requirements.txt
+# Optional (for microphone input support)
+pip install pyaudio
+pip install -r requirments.txt
 ```
 
 Linux note: for microphone support you may need system packages (example for Debian/Ubuntu):
