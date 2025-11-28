@@ -69,11 +69,7 @@ python -m venv .venv
 
 Install dependencies:
 
-```powershell
-pip install -r requirment.text
-```
-
-If you renamed `requirment.text` to `requirements.txt`, run:
+```powershell run:
 
 ```powershell
 pip install -r requirements.txt
